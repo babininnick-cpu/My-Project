@@ -1,30 +1,325 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Доклад</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #fff;
-  margin: 0;
-  padding: 40px;
-  line-height: 1.6;
-}
-h1 {
-  text-align: center;
-}
-.content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методы обнаружения и предотвращения DDoS атак</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #3498db;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        h3 {
+            color: #2980b9;
+            margin: 20px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .image-caption {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .conclusion {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            ul, ol {
+                margin-left: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Название</h1>
-<div class="content">
-  <p>текст</p>
-</div>
+    <div class="container">
+        <header>
+            <h1>Методы обнаружения и предотвращения DDoS атак</h1>
+            <p>Доклад по информационной безопасности</p>
+        </header>
+        
+        <section>
+            <h2>Введение</h2>
+            <p>Распределенные атаки типа «отказ в обслуживании» (DDoS) представляют собой одну из наиболее серьезных угроз для современных интернет-сервисов и инфраструктур. Эти атаки направлены на нарушение доступности целевых систем путем перегрузки их ресурсов, что приводит к недоступности сервисов для легитимных пользователей.</p>
+            
+            <p>С развитием интернета вещей (IoT) и увеличением числа подключенных устройств масштабы DDoS-атак продолжают расти, что делает разработку эффективных методов обнаружения и предотвращения таких атак критически важной задачей для организаций любого масштаба.</p>
+            
+            <div class="image-container">
+                <img src="https://www.cloudflare.com/img/learning/ddos/what-is-a-ddos-attack/flow-diagram.png" alt="Схема DDoS-атаки">
+                <p class="image-caption">Рис. 1 - Схема типичной DDoS-атаки</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Что такое DDoS-атака?</h2>
+            <p>DDoS-атака (Distributed Denial of Service) — это кибератака, при которой злоумышленник пытается сделать сетевой ресурс недоступным для его целевых пользователей, нарушая функционирование сервера, службы или сети путем переполнения целевой системы или окружающей ее инфраструктуры огромным объемом интернет-трафика.</p>
+            
+            <h3>Типы DDoS-атак</h3>
+            <ul>
+                <li><strong>Объемные атаки</strong> — нацелены на потребление всей доступной пропускной способности между целью и интернетом</li>
+                <li><strong>Протокольные атаки</strong> — истощают ресурсы сервера или промежуточных устройств (брандмауэров, балансировщиков нагрузки)</li>
+                <li><strong>Атаки на уровне приложений</strong> — нацелены на веб-приложения и считаются наиболее сложными для обнаружения</li>
+            </ul>
+            
+            <div class="image-container">
+                <img src="https://www.imperva.com/learn/wp-content/uploads/sites/13/2019/01/DDoS-attack-types-1.jpg" alt="Типы DDoS-атак">
+                <p class="image-caption">Рис. 2 - Основные типы DDoS-атак</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Методы обнаружения DDoS-атак</h2>
+            
+            <h3>Статистические методы</h3>
+            <p>Статистические методы основаны на анализе параметров сетевого трафика и выявлении аномалий. К ним относятся:</p>
+            <ul>
+                <li>Анализ объема трафика</li>
+                <li>Мониторинг скорости пакетов</li>
+                <li>Анализ распределения IP-адресов</li>
+                <li>Отслеживание соотношения TCP/UDP/ICMP пакетов</li>
+            </ul>
+            
+            <h3>Сигнатурные методы</h3>
+            <p>Сигнатурные методы основаны на сравнении текущего трафика с известными шаблонами атак. Эти методы эффективны против известных атак, но не могут обнаруживать новые, ранее неизвестные угрозы.</p>
+            
+            <h3>Поведенческие методы</h3>
+            <p>Поведенческие методы используют машинное обучение и искусственный интеллект для построения профиля нормального поведения системы и обнаружения отклонений от этого профиля.</p>
+            
+            <div class="highlight">
+                <p><strong>Важно:</strong> Современные системы обнаружения DDoS-атак часто комбинируют несколько методов для повышения эффективности и снижения количества ложных срабатываний.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="https://www.researchgate.net/profile/Mohammad-Reza-Keyvanpour/publication/344548771/figure/fig1/AS:941577102532610@1601542641679/DDoS-attack-detection-methods-and-techniques.ppm" alt="Методы обнаружения DDoS-атак">
+                <p class="image-caption">Рис. 3 - Классификация методов обнаружения DDoS-атак</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Методы предотвращения DDoS-атак</h2>
+            
+            <h3>Проактивные меры</h3>
+            <p>Проактивные меры направлены на предотвращение атак до их начала:</p>
+            <ul>
+                <li>Резервирование ресурсов и избыточность инфраструктуры</li>
+                <li>Настройка брандмауэров и систем обнаружения вторжений</li>
+                <li>Регулярное обновление программного обеспечения</li>
+                <li>Ограничение скорости (rate limiting) для различных сервисов</li>
+                <li>Использование CDN (Content Delivery Network)</li>
+            </ul>
+            
+            <h3>Реактивные меры</h3>
+            <p>Реактивные меры применяются во время атаки для минимизации ущерба:</p>
+            <ul>
+                <li>Фильтрация трафика на основе черных и белых списков</li>
+                <li>Перенаправление трафика через системы очистки</li>
+                <li>Блокировка подозрительных IP-адресов</li>
+                <li>Использование Anycast-сетей для распределения нагрузки</li>
+                <li>Активация планов реагирования на инциденты</li>
+            </ul>
+            
+            <h3>Сравнение методов предотвращения</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метод</th>
+                        <th>Эффективность</th>
+                        <th>Сложность внедрения</th>
+                        <th>Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Базовая фильтрация трафика</td>
+                        <td>Низкая</td>
+                        <td>Низкая</td>
+                        <td>Низкая</td>
+                    </tr>
+                    <tr>
+                        <td>Rate Limiting</td>
+                        <td>Средняя</td>
+                        <td>Средняя</td>
+                        <td>Средняя</td>
+                    </tr>
+                    <tr>
+                        <td>Системы обнаружения вторжений</td>
+                        <td>Высокая</td>
+                        <td>Высокая</td>
+                        <td>Высокая</td>
+                    </tr>
+                    <tr>
+                        <td>Сервисы очистки трафика</td>
+                        <td>Очень высокая</td>
+                        <td>Низкая</td>
+                        <td>Высокая (подписка)</td>
+                    </tr>
+                    <tr>
+                        <td>Anycast-сети</td>
+                        <td>Очень высокая</td>
+                        <td>Высокая</td>
+                        <td>Очень высокая</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="image-container">
+                <img src="https://www.checkpoint.com/wp-content/uploads/2021/09/ddos-mitigation.png" alt="Процесс предотвращения DDoS-атак">
+                <p class="image-caption">Рис. 4 - Процесс предотвращения DDoS-атак</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Современные тенденции и будущее развитие</h2>
+            
+            <h3>Использование искусственного интеллекта и машинного обучения</h3>
+            <p>Современные системы защиты все чаще используют алгоритмы машинного обучения для автоматического обнаружения и классификации DDoS-атак. Эти системы способны адаптироваться к изменяющимся паттернам атак и минимизировать необходимость вмешательства человека.</p>
+            
+            <h3>Облачные сервисы защиты</h3>
+            <p>Растет популярность облачных сервисов защиты от DDoS-атак, которые предлагают масштабируемость и высокую эффективность без необходимости инвестиций в дорогостоящее оборудование.</p>
+            
+            <h3>Блокчейн-технологии</h3>
+            <p>Исследуется возможность использования блокчейн-технологий для создания децентрализованных систем защиты, которые могут быть более устойчивыми к DDoS-атакам.</p>
+            
+            <div class="highlight">
+                <p><strong>Прогноз:</strong> Ожидается, что в ближайшие годы DDoS-атаки станут более сложными, целевыми и продолжительными, что потребует развития более интеллектуальных и адаптивных систем защиты.</p>
+            </div>
+        </section>
+        
+        <section class="conclusion">
+            <h2>Заключение</h2>
+            <p>DDoS-атаки продолжают оставаться серьезной угрозой для организаций по всему миру. Эффективная защита от них требует комплексного подхода, сочетающего методы обнаружения и предотвращения.</p>
+            
+            <p>Ключевыми элементами успешной защиты являются:</p>
+            <ul>
+                <li>Многоуровневая стратегия безопасности</li>
+                <li>Комбинация проактивных и реактивных мер</li>
+                <li>Регулярное тестирование и обновление систем защиты</li>
+                <li>Обучение персонала и наличие четкого плана реагирования на инциденты</li>
+                <li>Рассмотрение использования облачных сервисов защиты для критически важных ресурсов</li>
+            </ul>
+            
+            <p>Постоянное развитие технологий как атак, так и защиты требует от организаций поддержания актуальности своих систем безопасности и готовности к быстрому реагированию на новые угрозы.</p>
+        </section>
+        
+        <footer>
+            <p>Доклад подготовлен для курса по информационной безопасности</p>
+            <p>&copy; 2023</p>
+        </footer>
+    </div>
 </body>
 </html>
