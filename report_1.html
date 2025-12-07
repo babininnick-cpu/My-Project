@@ -187,7 +187,7 @@
             <p>С развитием интернета вещей (IoT) и увеличением числа подключенных устройств масштабы DDoS-атак продолжают расти, что делает разработку эффективных методов обнаружения и предотвращения таких атак критически важной задачей для организаций любого масштаба.</p>
             
             <div class="image-container">
-                <img src="https://www.cloudflare.com/img/learning/ddos/what-is-a-ddos-attack/flow-diagram.png" alt="Схема DDoS-атаки">
+                <img src="img/how_ddos_work.jpg" alt="Схема DDoS-атаки">
                 <p class="image-caption">Рис. 1 - Схема типичной DDoS-атаки</p>
             </div>
         </section>
@@ -198,7 +198,7 @@
             <p>Прежде чем углубляться в методы обнаружения и предотвращения DDoS-атак, важно понять фундаментальное различие между двумя родственными типами угроз: DoS (Denial of Service) и DDoS (Distributed Denial of Service) атаками.</p>
             
             <div class="image-container">
-                <img src="https://www.researchgate.net/profile/Abdelkader-Ouda/publication/335722209/figure/fig1/AS:802472151298048@1567619518993/Difference-between-DoS-and-DDoS-Attacks-2.png" alt="Разница между DoS и DDoS атаками">
+                <img src="img/i.jpg" alt="Разница между DoS и DDoS атаками">
                 <p class="image-caption">Рис. 2 - Сравнение архитектуры DoS и DDoS атак</p>
             </div>
             
@@ -226,47 +226,11 @@
             </ul>
             
             <h3>Сравнительная таблица DoS и DDoS атак</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Критерий</th>
-                        <th>DoS-атака</th>
-                        <th>DDoS-атака</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Источник атаки</strong></td>
-                        <td>Один компьютер или сеть</td>
-                        <td>Множество распределенных устройств (ботнет)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Масштаб трафика</strong></td>
-                        <td>Ограничен мощностью одного источника</td>
-                        <td>Может достигать терабит в секунду</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Сложность организации</strong></td>
-                        <td>Относительно простая</td>
-                        <td>Высокая (требует инфраструктуры ботнета)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Сложность обнаружения</strong></td>
-                        <td>Проще (один источник)</td>
-                        <td>Сложнее (множество легитимных на вид источников)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Эффективность блокировки</strong></td>
-                        <td>Высокая (блокировка IP-адреса)</td>
-                        <td>Низкая (невозможно заблокировать все источники)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Типичные методы защиты</strong></td>
-                        <td>Брандмауэры, ACL</td>
-                        <td>Специализированные системы очистки трафика, CDN</td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div class="image-container">
+                <img src="img/ftf_table.png" alt="сравнение">
+                <p class="image-caption">Сравнение DoS и DDoS атак</p>
+            </div>
             
             <div class="highlight">
                 <p><strong>Ключевое различие:</strong> Основное отличие между DoS и DDoS заключается в распределенном характере последней. Если DoS можно сравнить с тем, как один человек пытается выкрикивать поверх говорящего, то DDoS — это когда тысячи людей одновременно кричат, заглушая любого оратора.</p>
@@ -287,7 +251,7 @@
             </ul>
             
             <div class="image-container">
-                <img src="https://www.imperva.com/learn/wp-content/uploads/sites/13/2019/01/DDoS-attack-types-1.jpg" alt="Типы DDoS-атак">
+                <img src="img/types_of_atacks.gif" alt="Типы DDoS-атак">
                 <p class="image-caption">Рис. 2 - Основные типы DDoS-атак</p>
             </div>
         </section>
@@ -315,42 +279,11 @@
                 <p>Стандартные методы статистического анализа не позволяют выявлять ранее неизвестные атаки, поэтому нейронные сети с использованием методов машинного обучения активно выступают в качестве механизма решения этой проблемы.</p>
                 
                 <h4>Ключевые алгоритмы машинного обучения</h4>
-                <table class="algorithm-table">
-                    <thead>
-                        <tr>
-                            <th>Метод</th>
-                            <th>Краткое описание</th>
-                            <th>Особенности</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Случайный лес (Random Forest)</strong></td>
-                            <td>Ансамблевый метод, использующий множество деревьев решений</td>
-                            <td>Устойчив к переобучению, показывает высокую точность</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Дерево решений (Decision Tree)</strong></td>
-                            <td>Классификатор, который строит дерево на основе признаков данных</td>
-                            <td>Прост для интерпретации</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Метод k-ближайших соседей (KNN)</strong></td>
-                            <td>Относит объект к тому классу, к которому принадлежит большинство его ближайших соседей</td>
-                            <td>Может показывать высокую точность (до 98.3%)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Наивный байесовский классификатор (Naive Bayes)</strong></td>
-                            <td>Основан на применении теоремы Байеса с предположением о независимости признаков</td>
-                            <td>Простой и эффективный алгоритм</td>
-                        </tr>
-                        <tr>
-                            <td><strong>XGBoost</strong></td>
-                            <td>Алгоритм градиентного бустинга на деревьях решений</td>
-                            <td>Часто показывает одно из лучших качеств классификации</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <div class="image-container">
+                <img src="img/table_algoritms.png" alt="Алгоритмы обнаружения">
+                <p class="image-caption">Основные алгоритмы обнаружения DDoS-атак</p>
+                </div>
                 
                 <p>Важным этапом в построении моделей машинного обучения является <strong>отбор признаков (Feature Engineering)</strong>. Исследования показывают, что использование алгоритмов оптимизации для выбора оптимального подбора признаков из набора данных позволяет значительно повысить точность моделей.</p>
             </div>
@@ -369,7 +302,7 @@
                 <p>На практике для обнаружения DDoS-атак применяются такие архитектуры нейронных сетей, как <strong>сверточные нейронные сети (CNN), рекуррентные нейронные сети (RNN), включая сети с долгой краткосрочной памятью (LSTM), и автоэнкодеры</strong>.</p>
                 
                 <div class="image-container">
-                    <img src="https://www.researchgate.net/profile/Anand-Nayyar/publication/339391909/figure/fig2/AS:860923271974912@1582182177060/Deep-learning-approaches-for-cyber-security-applications.png" alt="Архитектуры глубокого обучения для кибербезопасности">
+                    <img src="img/lerning_model.png" alt="Архитектуры глубокого обучения для кибербезопасности">
                     <p class="image-caption">Рис. 3 - Архитектуры глубокого обучения для обнаружения DDoS-атак</p>
                 </div>
             </div>
@@ -387,10 +320,6 @@
                 <p><strong>Важно:</strong> Современные системы обнаружения DDoS-атак часто комбинируют несколько методов для повышения эффективности и снижения количества ложных срабатываний.</p>
             </div>
             
-            <div class="image-container">
-                <img src="https://www.researchgate.net/profile/Mohammad-Reza-Keyvanpour/publication/344548771/figure/fig1/AS:941577102532610@1601542641679/DDoS-attack-detection-methods-and-techniques.ppm" alt="Методы обнаружения DDoS-атак">
-                <p class="image-caption">Рис. 4 - Классификация методов обнаружения DDoS-атак</p>
-            </div>
         </section>
         
         <section>
@@ -417,52 +346,10 @@
             </ul>
             
             <h3>Сравнение методов предотвращения</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Метод</th>
-                        <th>Эффективность</th>
-                        <th>Сложность внедрения</th>
-                        <th>Стоимость</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Базовая фильтрация трафика</td>
-                        <td>Низкая</td>
-                        <td>Низкая</td>
-                        <td>Низкая</td>
-                    </tr>
-                    <tr>
-                        <td>Rate Limiting</td>
-                        <td>Средняя</td>
-                        <td>Средняя</td>
-                        <td>Средняя</td>
-                    </tr>
-                    <tr>
-                        <td>Системы обнаружения вторжений</td>
-                        <td>Высокая</td>
-                        <td>Высокая</td>
-                        <td>Высокая</td>
-                    </tr>
-                    <tr>
-                        <td>Сервисы очистки трафика</td>
-                        <td>Очень высокая</td>
-                        <td>Низкая</td>
-                        <td>Высокая (подписка)</td>
-                    </tr>
-                    <tr>
-                        <td>Anycast-сети</td>
-                        <td>Очень высокая</td>
-                        <td>Высокая</td>
-                        <td>Очень высокая</td>
-                    </tr>
-                </tbody>
-            </table>
-            
+      
             <div class="image-container">
-                <img src="https://www.checkpoint.com/wp-content/uploads/2021/09/ddos-mitigation.png" alt="Процесс предотвращения DDoS-атак">
-                <p class="image-caption">Рис. 5 - Процесс предотвращения DDoS-атак</p>
+                <img src="img/table.png" alt="Сравнение методов предотвращения">
+                <p class="image-caption">Рис. 5 - Методы предотвращения DDoS-атак</p>
             </div>
         </section>
         
